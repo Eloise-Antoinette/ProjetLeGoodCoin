@@ -26,10 +26,11 @@ public class TheGoodCoinController {
 	TheGoodCoinService myService;
 
 	@RequestMapping("/")
-	public String homePage (Model m, @RequestParam (name="page") int i) {
+	public String homePage (Model m, @RequestParam (name="page", defaultValue="0") int i) {
 		Pageable pageWithTwoAdds = PageRequest.of(i, 2);
 		Page<Annonce> annonces= myService.findTrueAnnonces(pageWithTwoAdds);
 		m.addAttribute("annonces", annonces.getContent());
+		m.addAttribute("annonce", new Annonce());
 		m.addAttribute("nbDePages", annonces.getTotalPages()-1);
 		m.addAttribute("currentPage", i);
 		List<Utilisateur> utilisateurs= myService.findAllUsers();
@@ -38,7 +39,7 @@ public class TheGoodCoinController {
 	}
 	
 	@RequestMapping("/formAnnonce")
-	public ModelAndView formAnnonce() {
+	public ModelAndView formAnnonce() {		
 		return new ModelAndView("formAnnonce", "annonce", new Annonce());
 	}
 		
@@ -49,14 +50,37 @@ public class TheGoodCoinController {
 		return new ModelAndView("formUser", "utilisateur", new Utilisateur());
 	}
 	
+
+	
+	
 	@RequestMapping("/searchTitle")
 	public String homePage (Model m, 
-			@RequestParam (name="title") String title,
+			@RequestParam (name="title") String title, 
+			@RequestParam (name="ville") String ville,
+			@RequestParam (name="description") String description,
 			@Valid @ModelAttribute("annonce")final Annonce annonce, 
 			final BindingResult result) {
-		List<Annonce> annonces = myService.findByTitle(title);
+		List<Annonce> annonces = null;
+		
+		if(!title.isEmpty() && !ville.isEmpty() && !description.isEmpty()) {
+			annonces = myService.findAllBySoldTrueAndTitleContainsOrVilleContainsOrDescriptionContains(title, ville, description);
+		} else if(!title.isEmpty() && !ville.isEmpty() && description.isEmpty()) {
+			annonces = myService.findAllBySoldTrueAndTitleContainsOrVilleContains(title, ville);
+		} else if(!title.isEmpty() && ville.isEmpty() && !description.isEmpty()) {
+			annonces = myService.findAllBySoldTrueAndTitleContainsOrDescriptionContains(title, description);
+		} else if(title.isEmpty() && ville.isEmpty() && !description.isEmpty()) {
+			annonces = myService.findAllBySoldTrueAndVilleContainsOrDescriptionContains(ville, description);
+		} else if(description.isEmpty() && !title.isEmpty() && ville.isEmpty()) {
+			annonces = myService.findAllBySoldTrueAndTitleContains(title);
+		} else if(description.isEmpty() && title.isEmpty() && !ville.isEmpty()) {
+			annonces = myService.findAllBySoldTrueAndVilleContains(ville);
+		} else if(!description.isEmpty() && title.isEmpty() && !ville.isEmpty()) {
+			annonces = myService.findAllByDescriptionAndSoldTrue(description);	
+		}
+		
 		List<Utilisateur> utilisateurs= myService.findAllUsers();
 		m.addAttribute("utilisateurs", utilisateurs);
+		m.addAttribute("annonces", annonces);
 		return "index";
 	}
 	
@@ -80,12 +104,12 @@ public class TheGoodCoinController {
     myService.save(annonce);
     
     
-    Pageable pageWithTwoAdds = PageRequest.of(1, 2);
+    Pageable pageWithTwoAdds = PageRequest.of(0, 2);
 	Page<Annonce> annonces= myService.findTrueAnnonces(pageWithTwoAdds);	
 	m.addAttribute("annonces", annonces.getContent());	
 	List<Utilisateur> utilisateurs= myService.findAllUsers();
 	m.addAttribute("utilisateurs", utilisateurs);
-	m.addAttribute("nbDePages", annonces.getTotalPages());
+	m.addAttribute("nbDePages", annonces.getTotalPages()-1);
 	
 	return "index";
 }

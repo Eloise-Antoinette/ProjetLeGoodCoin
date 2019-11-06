@@ -7,7 +7,7 @@
         <p>${ erreur }</p>
         <table>
             <tr>
-                <td><a href="/?page=0">Retry</a></td>
+                <td><a href="/?page=0">Acceder au site</a></td>
             </tr>
         </table>
     </body>

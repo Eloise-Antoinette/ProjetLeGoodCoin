@@ -1,0 +1,79 @@
+body {	
+background-color :  #FFC300 ;	
+}
+
+
+.div{
+margin : 2em;
+padding: 2em;
+border : none;
+border-radius: 15px;
+background-color:   #73c6b6  ;
+}
+
+h2{
+font-size: 2em;
+color:  #C70039 ;
+}
+
+#recherche{
+background-color :   #a2d9ce  ;
+margin-bottom : 1em;
+border : groove;
+padding : 0.9em;	
+}
+
+.annonce{
+background-color :   #a2d9ce  ;
+margin-bottom : 1em;
+border : groove;
+padding : 0.9em;
+}
+
+#utilisateur{
+background-color :   #a2d9ce   ;
+margin-bottom : 1em;
+border : groove;
+padding : 0.9em;
+
+} 
+
+.div a{
+padding : 0.6em;
+margin : 0.6em;
+color: DarkSlateGray;
+}
+
+
+header{
+	display: flex;
+	float: center;
+	color:  #C70039 ;
+	
+}
+
+h1{
+	font-size: 2.5em;
+}
+
+footer a {
+color: #FFC300;
+border-color : #FFC300;
+	align-items : center;
+	justify-content: center;
+	height: 5em;
+}
+
+footer div {
+height: 8em;
+	align-items : center;
+}
+
+footer {
+	display : flex;
+	justify-content: center;
+	align-items : center;
+	height : 10em;
+	background-color:#C70039 ;
+
+}

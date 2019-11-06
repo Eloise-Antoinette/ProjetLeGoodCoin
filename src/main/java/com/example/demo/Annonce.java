@@ -28,7 +28,7 @@ public class Annonce {
 	protected int proprietaire;
 	protected String ville;
 	protected int codePostal;
-	protected boolean sold;
+	protected boolean sold = true;
 	
 
 	public boolean isSold() {

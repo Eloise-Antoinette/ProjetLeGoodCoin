@@ -7,30 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-
-table {
-border: solid;
-border-collapse: collapse ;
-}
-
-tr{
-border: solid;
-border-collapse: collapse ;
-
-}
-
-td{
-border: solid;
-border-collapse: collapse ;
-width: 174.667px;
-text-align:center;
-
-}
-
-</style>
+<link rel="stylesheet" type="text/css" href="TheGoodCoin.css" />
 </head>
 <body>
+<jsp:include page="header.jsp" />
 <form:form method="POST" action="/addUser" modelAttribute="utilisateur">
              <table>
                 <tr>
@@ -51,7 +31,7 @@ text-align:center;
         </form:form>
 
        
-
+<jsp:include page="footer.jsp" />
 
 </body>
 </html>

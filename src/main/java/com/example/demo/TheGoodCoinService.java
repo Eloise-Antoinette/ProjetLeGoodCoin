@@ -46,9 +46,41 @@ public class TheGoodCoinService {
 		System.out.println("setSold from repository");
 	}
 
-	public List<Annonce> findByTitle(String title) {
-		return annonceRepo.findByTitle(title);
+	public List<Annonce> findByTitleAndSoldTrue(String title) {
+		return annonceRepo.findByTitleAndSoldTrue(title);
 	}
+	
+	public List<Annonce> findAllBySoldTrueAndTitleContainsOrVilleContainsOrDescriptionContains(String title, String ville, String description){
+		return annonceRepo.findAllBySoldTrueAndTitleContainsOrVilleContainsOrDescriptionContains(title, ville, description);
+	}
+
+	public List<Annonce> findAllBySoldTrueAndTitleContainsOrVilleContains(String title, String ville) {
+		return annonceRepo.findAllBySoldTrueAndTitleContainsOrVilleContains(title, ville);
+	}
+
+	public List<Annonce> findAllBySoldTrueAndTitleContains(String title) {
+		return annonceRepo.findAllBySoldTrueAndTitleContains(title);
+	}
+
+	public List<Annonce> findAllBySoldTrueAndVilleContains(String ville) {
+		return annonceRepo.findAllBySoldTrueAndVilleContains(ville);
+	}
+
+	public List<Annonce> findAllBySoldTrueAndTitleContainsOrDescriptionContains(String title, String description) {
+		return annonceRepo.findAllBySoldTrueAndTitleContainsOrDescriptionContains(title, description);
+	}
+
+	public List<Annonce> findAllBySoldTrueAndVilleContainsOrDescriptionContains(String ville, String description) {
+		return annonceRepo.findAllBySoldTrueAndVilleContainsOrDescriptionContains(ville, description);
+	}
+
+
+
+	public List<Annonce> findAllByDescriptionAndSoldTrue(String description) {
+		return annonceRepo.findAllBySoldTrueAndDescriptionContains(description);
+	}
+
+
 	
 
 }
