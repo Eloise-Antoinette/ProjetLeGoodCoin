@@ -50,7 +50,11 @@ public class TheGoodCoinController {
 		return new ModelAndView("formUser", "utilisateur", new Utilisateur());
 	}
 	
-
+	@RequestMapping("/formConnexion")
+	public ModelAndView formConnexion() {		
+		return new ModelAndView("formConnexion", "utilisateur", new Utilisateur());
+	}
+		
 	
 	
 	@RequestMapping("/searchTitle")
@@ -106,7 +110,8 @@ public class TheGoodCoinController {
     
     Pageable pageWithTwoAdds = PageRequest.of(0, 2);
 	Page<Annonce> annonces= myService.findTrueAnnonces(pageWithTwoAdds);	
-	m.addAttribute("annonces", annonces.getContent());	
+	m.addAttribute("annonces", annonces.getContent());
+	m.addAttribute("annonce", new Annonce());
 	List<Utilisateur> utilisateurs= myService.findAllUsers();
 	m.addAttribute("utilisateurs", utilisateurs);
 	m.addAttribute("nbDePages", annonces.getTotalPages()-1);
@@ -128,6 +133,7 @@ public class TheGoodCoinController {
         return "formUser";
     }
     myService.save(utilisateur);
+	m.addAttribute("annonce", new Annonce());
 	List<Utilisateur> utilisateurs= myService.findAllUsers();
 	m.addAttribute("utilisateurs", utilisateurs);
 	return "index";
@@ -138,20 +144,39 @@ public class TheGoodCoinController {
 		
 	@RequestMapping(value="/delete")
 	public String deleteThisAdd(Model m, @RequestParam (name="id") int i) {
-		System.out.println("delete");
+
 		myService.setOneSold(i, false);
 		myService.save(myService.annonceRepo.findById(i).get());
-		System.out.println("delete 2 ");
-		Pageable pageWithTwoAdds = PageRequest.of(i, 2);
-		Page<Annonce> annonces= myService.findTrueAnnonces(pageWithTwoAdds);
+
+	    Pageable pageWithTwoAdds = PageRequest.of(0, 2);
+		Page<Annonce> annonces= myService.findTrueAnnonces(pageWithTwoAdds);	
 		m.addAttribute("annonces", annonces.getContent());
-		m.addAttribute("nbDePages", annonces.getTotalPages()-1);
-		m.addAttribute("currentPage", i);
+		m.addAttribute("annonce", new Annonce());
 		List<Utilisateur> utilisateurs= myService.findAllUsers();
 		m.addAttribute("utilisateurs", utilisateurs);
+		m.addAttribute("nbDePages", annonces.getTotalPages()-1);
+		
 		return "index";
 		
 	}
 	
+// ------- SE CONNECTER
+	@RequestMapping(value="/connexion")
+	public String connexion(@Valid @ModelAttribute("annonce")final Utilisateur utilisateur, 
+			final BindingResult result, 
+			final ModelMap m) {
+		m.addAttribute("utilisateurConnecté", myService.findUserByName(utilisateur.getUtilisateurName()));
+		System.out.println(myService.findUserByPassword(utilisateur.getMotDePasse()).getMotDePasse());
+		System.out.println(myService.findUserByName(utilisateur.getUtilisateurName()).getUtilisateurName());
+		if(utilisateur.getUtilisateurName() == myService.findUserByName(utilisateur.getUtilisateurName()).getUtilisateurName() && utilisateur.getMotDePasse() == myService.findUserByPassword(utilisateur.getMotDePasse()).getMotDePasse()
+	){
+		
+			return "connected";
+		} else {
+			return "connexionError";
+		}
+
+		
+	}
 
 }

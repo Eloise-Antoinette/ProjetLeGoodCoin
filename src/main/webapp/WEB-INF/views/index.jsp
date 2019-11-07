@@ -55,7 +55,7 @@
 <p>${annonce.prix}€ seulement !</p>
 <p>${annonce.postDate}</p>
 <p>${annonce.ville}</p>
-<a href="http://localhost:8080/delete/?id=${annonce.annonceId}">Supprimer cette annonce</a>
+<a href="http://localhost:8080/delete?id=${annonce.annonceId}">Supprimer cette annonce</a>
 </div>
 
 </c:forEach>
@@ -79,7 +79,9 @@
 <c:forEach items="${utilisateurs}" var="utilisateur">
 <div id="utilisateur">
 <p>${utilisateur.utilisateurName}</p>
+<a href="http://localhost:8080/formConnexion">Se connecter</a>
 </div>
+
 </c:forEach>
 </div>
 

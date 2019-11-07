@@ -80,7 +80,12 @@ public class TheGoodCoinService {
 		return annonceRepo.findAllBySoldTrueAndDescriptionContains(description);
 	}
 
+	public Utilisateur findUserByName(String name) {
+		return utilisateurRepo.findByUtilisateurName(name);
+	}
 
-	
+	public Utilisateur findUserByPassword(String mdp) {
+		return utilisateurRepo.findByMotDePasse(mdp);
+	}
 
 }
