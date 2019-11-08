@@ -1,5 +1,8 @@
+
+
 body {	
-background-color :  #FFC300 ;	
+background-color :  #FFC300 ;
+font-family: 'Supermercado One', cursive;	
 }
 
 
@@ -9,11 +12,13 @@ padding: 2em;
 border : none;
 border-radius: 15px;
 background-color:   #73c6b6  ;
+
 }
 
 h2{
 font-size: 2em;
 color:  #C70039 ;
+	font-family: 'Fredoka One', cursive;
 }
 
 #recherche{
@@ -21,6 +26,7 @@ background-color :   #a2d9ce  ;
 margin-bottom : 1em;
 border : groove;
 padding : 0.9em;	
+
 }
 
 .annonce{
@@ -28,6 +34,11 @@ background-color :   #a2d9ce  ;
 margin-bottom : 1em;
 border : groove;
 padding : 0.9em;
+font-family: 'Marvel', sans-serif;
+}
+
+.annoncetitle{
+	font-family: 'Supermercado One', sans-serif;
 }
 
 #utilisateur{
@@ -35,9 +46,27 @@ background-color :   #a2d9ce   ;
 margin-bottom : 1em;
 border : groove;
 padding : 0.9em;
-
+font-family: 'Marvel', sans-serif;
 } 
 
+#utilisateur{
+background-color :   #a2d9ce   ;
+margin-bottom : 1em;
+border : groove;
+padding : 0.9em;
+font-family: 'Marvel', sans-serif;
+} 
+#search{
+	font-family: 'Marvel', sans-serif;
+}
+
+#search button{
+	font-family: 'Marvel', sans-serif;
+}
+
+#formAnnonce{
+	font-family: 'Marvel', sans-serif;
+}
 .div a{
 padding : 0.6em;
 margin : 0.6em;
@@ -46,14 +75,20 @@ color: DarkSlateGray;
 
 
 header{
-	display: flex;
-	float: center;
+	text-align: center;
 	color:  #C70039 ;
 	
 }
 
+p header{
+	margin-left: auto;
+    margin-right: auto;
+}
+
 h1{
 	font-size: 2.5em;
+	font-family: 'Fredoka One', cursive;
+	
 }
 
 footer a {
@@ -62,11 +97,15 @@ border-color : #FFC300;
 	align-items : center;
 	justify-content: center;
 	height: 5em;
+margin : 5em;
+padding-top:3em;
+vertical-align:middle;
 }
 
 footer div {
 height: 8em;
-	align-items : center;
+align-items : center;
+	
 }
 
 footer {
@@ -74,6 +113,8 @@ footer {
 	justify-content: center;
 	align-items : center;
 	height : 10em;
+	width: 100%;
 	background-color:#C70039 ;
-
+	
+	bottom: 0 ;
 }

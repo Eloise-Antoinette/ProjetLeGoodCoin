@@ -9,8 +9,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="TheGoodCoin.css" />
-
-</head>
+<link href="https://fonts.googleapis.com/css?family=Supermercado+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Marvel&display=swap" rel="stylesheet"> </head>
 <body>
 <jsp:include page="header.jsp" />
 <div id="search" class="div">
@@ -50,18 +52,36 @@
 <c:forEach items="${annonces}" var="annonce">
 
 <div class="annonce">
-<p>${annonce.title}</p>
+<p class=annoncetitle>${annonce.title}</p>
 <p>${annonce.description}</p>
 <p>${annonce.prix}€ seulement !</p>
 <p>${annonce.postDate}</p>
 <p>${annonce.ville}</p>
+<c:if test="${utilisateurConnecte.utilisateurId == annonce.proprietaire}">
 <a href="http://localhost:8080/delete?id=${annonce.annonceId}">Supprimer cette annonce</a>
+</c:if>
+
 </div>
 
 </c:forEach>
+<c:choose>
+<c:when test="${utilisateurconnecte != null}">
 
 
+
+<a href="http://localhost:8080/session?page=${currentPage-1}&utilisateur=${utilisateurConnecte.utilisateurName}">Previous page</a>       
+
+
+<c:forEach begin = "0" end="${nbDePages}" var="nb">
+<a href="http://localhost:8080/session?page=${nb}&utilisateur=${utilisateurConnecte.utilisateurName}">${nb+1}</a>       
+</c:forEach>
+
+<a href="http://localhost:8080/session?page=${nb+1}&utilisateur=${utilisateurConnecte.utilisateurName}">Next page</a>       
+
+</c:when>
+<c:otherwise>
 <a href="http://localhost:8080/?page=${currentPage-1}">Previous page</a>       
+
 
 
 <c:forEach begin = "0" end="${nbDePages}" var="nb">
@@ -69,7 +89,8 @@
 </c:forEach>
 
 <a href="http://localhost:8080/?page=${nb+1}">Next page</a>       
-
+</c:otherwise>
+</c:choose>
 </div>
 
 
@@ -79,7 +100,6 @@
 <c:forEach items="${utilisateurs}" var="utilisateur">
 <div id="utilisateur">
 <p>${utilisateur.utilisateurName}</p>
-<a href="http://localhost:8080/formConnexion">Se connecter</a>
 </div>
 
 </c:forEach>

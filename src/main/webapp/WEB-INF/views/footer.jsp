@@ -6,8 +6,34 @@
 <!DOCTYPE html>
 <footer>
 <div id="footerdiv">
-<a href="/formAnnonce">Ajouter une annonce</a>
-<a href="/formUser">Creer un compte</a>       
-<a href="/search">Rechercher</a>
+<a href="/">Accueil</a>
+
+      
+
+<c:if test="${utilisateurConnecte == null}">
+
+<a href="/formUser">Creer un compte</a> 
+</c:if>
+
+
+
+<c:if test="${utilisateurConnecte != null}">
+
+<a href="http://localhost:8080/formAnnonce?utilisateurConnecte=${utilisateurConnecte.utilisateurName}">Ajouter une annonce</a>
+</c:if>
+
+
+
+
+<c:if test="${utilisateurConnecte == null}">
+
+<a href="http://localhost:8080/formConnexion">Se connecter</a>
+</c:if>
+
+<c:if test="${utilisateurConnecte != null}">
+
+<a href="http://localhost:8080/monCompte?utilisateurConnecte=${utilisateurConnecte.utilisateurName}">Accéder à mon espace perso</a>
+</c:if>
+
 </div>
 </footer>

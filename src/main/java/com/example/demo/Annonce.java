@@ -23,7 +23,6 @@ public class Annonce {
 	@NotBlank(message = "Champ obligatoire !")
 	protected String description;
 	protected Date postDate = new Date();	
-// @Pattern(regexp="^(0|[1-9][0-9]*",message="prix")  
 	protected Integer prix;
 	protected int proprietaire;
 	protected String ville;

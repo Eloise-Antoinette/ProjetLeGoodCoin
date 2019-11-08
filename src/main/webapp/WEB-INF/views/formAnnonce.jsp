@@ -8,10 +8,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="TheGoodCoin.css" />
+<link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Supermercado+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Marvel&display=swap" rel="stylesheet"> 
 </head>
 <body>
 <jsp:include page="header.jsp" />
-<form:form method="POST" action="/addAnnonce" modelAttribute="annonce">
+
+<h2>Ajouter une annonce</h2>
+<form:form method="POST" action="/addAnnonce?utilisateurConnecte=${utilisateurConnecte.utilisateurName}" modelAttribute="annonce">
              <table>
                 <tr>
                     <td><form:label path="title">Title</form:label></td>
@@ -41,9 +47,8 @@
                     <td><form:input path="ville"/></td>
                 </tr>	
                                  <tr>
-                    <td><form:label path="proprietaire">
-                      Propriétaire</form:label></td>
-                    <td><form:input path="proprietaire"/></td>
+                    
+                    <td><form:hidden value="${utilisateurConnecte.utilisateurId}" path="proprietaire"/></td>
                 </tr>	
                 <tr>
                     <td><input type="submit" value="SubmitAnnonce"/></td>

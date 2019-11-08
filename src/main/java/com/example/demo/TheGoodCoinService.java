@@ -88,4 +88,11 @@ public class TheGoodCoinService {
 		return utilisateurRepo.findByMotDePasse(mdp);
 	}
 
+
+	public List<Annonce> findAllByProprietaire(int utilisateur) {
+		return annonceRepo.findAllByProprietaire(utilisateur);
+	}
+
+
+
 }

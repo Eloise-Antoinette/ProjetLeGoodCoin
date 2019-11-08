@@ -7,7 +7,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface AnnonceRepository extends PagingAndSortingRepository<Annonce, Integer> {
-
+	
+	public List<Annonce> findAll();
+	
 	public Page<Annonce> findAllBySoldTrue(Pageable p);
 	
 	public List<Annonce> findByTitleAndSoldTrue(String title);
@@ -26,5 +28,7 @@ public interface AnnonceRepository extends PagingAndSortingRepository<Annonce, I
 	public List<Annonce> findAllBySoldTrueAndVilleContainsOrDescriptionContains(String ville, String description);
 
 	public List<Annonce> findAllBySoldTrueAndDescriptionContains(String description);
+
+	public List<Annonce> findAllByProprietaire(int utilisateur);
 	
 }

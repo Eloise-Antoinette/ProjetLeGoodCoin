@@ -8,6 +8,11 @@
 <meta charset="UTF-8">
 <title>TheGoodCoin</title>
 <link rel="stylesheet" type="text/css" href="TheGoodCoin.css" />
+<link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Supermercado+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Mitr&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Marvel&display=swap" rel="stylesheet"> 
 </head>
 <body>
 <jsp:include page="header.jsp" />

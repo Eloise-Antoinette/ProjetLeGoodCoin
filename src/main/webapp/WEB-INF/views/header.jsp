@@ -5,5 +5,7 @@
 <header>
 <h1>THE GOOD COIN</h1>
 
-<p>Bienvenue</p>
+<p>Bienvenue ${utilisateurConnecte.utilisateurName}</p>
+</br>
+
 </header>
